@@ -11,7 +11,6 @@ public class ListaClienti {
     private int ultimoArrivo;
     private int ultimoServito;
     private final int MassimiClienti = 5;
-    private final int numeroMassimo = 10;
     /**
      * constructor
      * settaggio delle variabili di istanza
