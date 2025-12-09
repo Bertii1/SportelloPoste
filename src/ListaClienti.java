@@ -10,6 +10,7 @@ public class ListaClienti {
     private ArrayList<Integer> listaNumeri;
     private int ultimoArrivo;
     private int ultimoServito;
+    private final int MassimiClienti = 5;
     private final int numeroMassimo = 10;
     /**
      * constructor
@@ -21,11 +22,13 @@ public class ListaClienti {
         ultimoServito = 0;
     }
 
-    /*synchronized parola chiave che gestisce il meccanismo del lock ovvero
+    /*
+    synchronized parola chiave che gestisce il meccanismo del lock ovvero
     * 1) impedisce ad un altro thread l'esecuzione di tale
     * metodo, se un precedente thread lo sta già eseguendo
     * 2) senza di lui wait e notify non possono essere usati
-    * si genera l'eccezione : IllegalMonitorStateException,*/
+    * si genera l'eccezione : IllegalMonitorStateException
+    */
 
     /**
      * TODO: cosa fa?
@@ -46,7 +49,7 @@ public class ListaClienti {
      *
      */
     public synchronized Integer addCliente() {
-        if (ultimoArrivo < numeroMassimo) {
+        if (ultimoArrivo - ultimoServito < MassimiClienti) {
             ultimoArrivo++;
             listaNumeri.add(ultimoArrivo);
             notify();
